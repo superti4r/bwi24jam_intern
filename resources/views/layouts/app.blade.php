@@ -22,6 +22,8 @@
 
 <body>
 
+    <x-preloader />
+
     @yield('content')
 
 </body>

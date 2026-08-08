@@ -22,6 +22,8 @@
 
 <body class="min-h-screen">
 
+    <x-preloader />
+
     <main class="min-h-screen lg:grid lg:grid-cols-2">
 
         <section class="flex min-h-screen items-center justify-center px-5 py-10 sm:px-8 lg:px-10">
