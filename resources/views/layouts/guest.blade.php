@@ -17,14 +17,18 @@
     </script>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-
 </head>
 
-<body>
+<body
+    class="flex flex-col min-h-screen bg-gray-50 dark:bg-primary text-gray-900 dark:text-gray-100 transition-colors duration-200">
 
     <x-preloader />
 
-    @yield('content')
+    <x-guest.header />
+
+    <main class="flex-1 w-full max-w-screen-2xl mx-auto px-4 md:px-8 py-6 lg:py-10">
+        @yield('content')
+    </main>
 
 </body>
 
