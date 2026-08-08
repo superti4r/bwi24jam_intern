@@ -1,15 +1,8 @@
-<?php
+@extends('layouts.auth')
 
-use Livewire\Attributes\Layout;
-use Livewire\Attributes\Title;
-use Livewire\Component;
+@section('title', 'Lupa Password')
 
-new #[Layout('layouts::auth')] #[Title('Lupa Password')] class extends Component {
-    // ...
-};
-?>
-
-<div>
+@section('content')
     <section class="w-full">
 
         <div class="mb-6">
@@ -22,33 +15,45 @@ new #[Layout('layouts::auth')] #[Title('Lupa Password')] class extends Component
             </p>
         </div>
 
+        @if (session('status'))
+            <div class="alert alert--success my-6">
+                {{ session('status') }}
+            </div>
+        @endif
 
-        <form class="space-y-4">
+        @if ($errors->any())
+            <div class="alert alert--danger my-6">
+                <ul class="list-inside list-disc">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        <form class="space-y-4" method="post" action="{{ route('password.email') }}">
+            @csrf
 
             <div class="field">
                 <label for="email" class="field__label">
                     Email
                 </label>
-
-                <input id="email" type="email" class="input" placeholder="Masukkan email Anda">
+                <input id="email" type="email" name="email" class="input" placeholder="Masukkan email Anda"
+                    value="{{ old('email') }}" required autofocus>
             </div>
 
-
-            <button type="button" class="button button--primary w-full">
+            <button type="submit" class="button button--primary w-full">
                 Kirim Tautan Reset Password
             </button>
 
             <p class="pt-1 text-center text-sm text-gray-500 dark:text-gray-400">
-
                 Sudah ingat password Anda?
-
-                <a href="#" class="link">
+                <a href="{{ route('login') }}" class="link">
                     Masuk
                 </a>
-
             </p>
 
         </form>
 
     </section>
-</div>
+@endsection

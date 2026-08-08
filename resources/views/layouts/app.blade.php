@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>{{ $title }} &mdash; {{ config('app.name') }}</title>
+    <title>@yield('title') &mdash; {{ config('app.name') }}</title>
 
     <script>
         document.documentElement.classList.toggle(
@@ -18,13 +18,12 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-    @livewireStyles
 </head>
 
 <body>
-    {{ $slot }}
 
-    @livewireScripts
+    @yield('content')
+
 </body>
 
 </html>
