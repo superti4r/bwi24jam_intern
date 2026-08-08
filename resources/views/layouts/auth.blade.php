@@ -3,9 +3,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>{{ config('app.name') }} &mdash; @yield('title')</title>
+    <title>{{ $title }} &mdash; {{ config('app.name') }}</title>
 
     <script>
         document.documentElement.classList.toggle(
@@ -16,10 +16,9 @@
         );
     </script>
 
-    @vite([
-        'resources/css/app.css',
-        'resources/js/app.js',
-    ])
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    @livewireStyles
 </head>
 
 <body class="min-h-screen">
@@ -29,7 +28,9 @@
         <section class="flex min-h-screen items-center justify-center px-5 py-10 sm:px-8 lg:px-10">
 
             <div class="w-full max-w-sm">
-                @yield('content')
+
+                {{ $slot }}
+
             </div>
 
         </section>
@@ -44,6 +45,7 @@
 
     </main>
 
+    @livewireScripts
 </body>
 
 </html>

@@ -1,6 +1,4 @@
-import "@stisla/css";
-import "@stisla/vanilla";
-
+import "./stisla";
 import { applyTheme } from "./theme";
 
 applyTheme();

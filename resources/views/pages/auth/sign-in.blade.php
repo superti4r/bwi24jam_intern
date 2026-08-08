@@ -1,9 +1,15 @@
-@extends('layouts.auth')
+<?php
 
-@section('title', 'Masuk')
+use Livewire\Attributes\Layout;
+use Livewire\Attributes\Title;
+use Livewire\Component;
 
-@section('content')
+new #[Layout('layouts::auth')] #[Title('Masuk')] class extends Component {
+    // ...
+};
+?>
 
+<div>
     <section class="w-full">
 
         <div class="mb-6">
@@ -75,5 +81,4 @@
         </form>
 
     </section>
-
-@endsection
+</div>

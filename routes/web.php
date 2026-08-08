@@ -2,18 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get("/", function () {
-    return view("pages.auth.sign-in");
-});
-
-Route::get("/register", function () {
-    return view("pages.auth.sign-up");
-});
-
-Route::get("/forgot-password", function () {
-    return view("pages.auth.forgot-password");
-});
-
-Route::get("/reset-password", function () {
-    return view("pages.auth.reset-password");
-});
+Route::view('/', 'welcome')->name('home');
+Route::livewire('/sign-in', 'pages::auth.sign-in')->name('sign-in');
+Route::livewire('/sign-up', 'pages::auth.sign-up')->name('sign-up');
+Route::livewire('/forgot-password', 'pages::auth.forgot-password')->name('forgot-password');
+Route::livewire('/reset-password', 'pages::auth.reset-password')->name('reset-password');
