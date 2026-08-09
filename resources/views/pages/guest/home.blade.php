@@ -3,7 +3,8 @@
 @section('title', 'Beranda')
 
 @section('content')
-<div>
-    
+<div class="space-y-10">
+    <x-guest.latest-articles />
+    <x-guest.list-articles />
 </div>
 @endsection
