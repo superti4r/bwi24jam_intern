@@ -13,18 +13,24 @@
 
         <x-app.sidebar-brand />
 
-        <a href="#"
+        <a href="{{ route(auth()->check() ? 'm.home' : 'home') }}"
             class="flex items-center px-4 py-2.5 text-sm font-medium text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)] hover:bg-[var(--color-accent)] rounded-lg transition-colors">
             Beranda
         </a>
-        <a href="#"
-            class="flex items-center px-4 py-2.5 text-sm font-medium text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)] hover:bg-[var(--color-accent)] rounded-lg transition-colors">
-            Tentang Kami
-        </a>
-        <a href="#"
-            class="flex items-center px-4 py-2.5 text-sm font-medium text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)] hover:bg-[var(--color-accent)] rounded-lg transition-colors">
-            Kontak
-        </a>
+
+        @php
+            $pages = \App\Models\Page::query()
+                ->published()
+                ->orderBy('created_at', 'asc')
+                ->get();
+        @endphp
+
+        @foreach ($pages as $page)
+            <a href="{{ route(auth()->check() ? 'm.pages.show' : 'pages.show', $page->slug) }}"
+                class="flex items-center px-4 py-2.5 text-sm font-medium text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)] hover:bg-[var(--color-accent)] rounded-lg transition-colors">
+                {{ $page->title }}
+            </a>
+        @endforeach
 
         <x-app.menu />
 

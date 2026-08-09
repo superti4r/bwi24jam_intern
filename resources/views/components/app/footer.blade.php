@@ -27,65 +27,33 @@
                 <x-app.footer-social />
             </div>
 
-            <div>
+            <div class="lg:col-span-2 xl:col-span-3">
                 <h3 class="text-[13px] font-bold text-[var(--color-foreground)] uppercase tracking-wider">
                     Navigasi
                 </h3>
-                <ul class="mt-5 space-y-3">
+                <ul class="mt-5 grid grid-cols-1 gap-x-8 gap-y-3 sm:grid-cols-2 lg:grid-cols-3">
                     <li>
-                        <a href="#"
+                        <a href="{{ route(auth()->check() ? 'm.home' : 'home') }}"
                             class="inline-block text-[14px] text-[var(--color-muted-foreground)] hover:text-[var(--color-primary)] hover:translate-x-1 transition-all duration-200">
                             Beranda
                         </a>
                     </li>
-                    <li>
-                        <a href="#"
-                            class="inline-block text-[14px] text-[var(--color-muted-foreground)] hover:text-[var(--color-primary)] hover:translate-x-1 transition-all duration-200">
-                            Artikel Terbaru
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="inline-block text-[14px] text-[var(--color-muted-foreground)] hover:text-[var(--color-primary)] hover:translate-x-1 transition-all duration-200">
-                            Tentang Kami
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="inline-block text-[14px] text-[var(--color-muted-foreground)] hover:text-[var(--color-primary)] hover:translate-x-1 transition-all duration-200">
-                            Kontak
-                        </a>
-                    </li>
+                    @php
+                        $pages = \App\Models\Page::query()
+                            ->published()
+                            ->orderBy('created_at', 'asc')
+                            ->get();
+                    @endphp
+                    @foreach ($pages as $page)
+                        <li>
+                            <a href="{{ route(auth()->check() ? 'm.pages.show' : 'pages.show', $page->slug) }}"
+                                class="inline-block text-[14px] text-[var(--color-muted-foreground)] hover:text-[var(--color-primary)] hover:translate-x-1 transition-all duration-200">
+                                {{ $page->title }}
+                            </a>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
-
-            <div>
-                <h3 class="text-[13px] font-bold text-[var(--color-foreground)] uppercase tracking-wider">
-                    Legalitas
-                </h3>
-                <ul class="mt-5 space-y-3">
-                    <li>
-                        <a href="#"
-                            class="inline-block text-[14px] text-[var(--color-muted-foreground)] hover:text-[var(--color-primary)] hover:translate-x-1 transition-all duration-200">
-                            Syarat & Ketentuan
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="inline-block text-[14px] text-[var(--color-muted-foreground)] hover:text-[var(--color-primary)] hover:translate-x-1 transition-all duration-200">
-                            Kebijakan Privasi
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="inline-block text-[14px] text-[var(--color-muted-foreground)] hover:text-[var(--color-primary)] hover:translate-x-1 transition-all duration-200">
-                            Panduan Komunitas
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="hidden lg:block"></div>
 
         </div>
 

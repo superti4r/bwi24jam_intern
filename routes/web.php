@@ -5,7 +5,8 @@ use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PageController::class, 'index'])->name('home');
-
+Route::get('/{slug}', [PageController::class, 'show'])->name('pages.show');
+Route::get('/m/{slug}', [PageController::class, 'show'])->name('m.pages.show');
 Route::get('/articles/{slug}/{title}', [ArticleController::class, 'show'])->name('articles.show');
 
 Route::middleware('auth')->group(function () {
@@ -21,6 +22,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/articles/{id}', [ArticleController::class, 'update'])->name('articles.update');
     Route::delete('/articles/{id}', [ArticleController::class, 'destroy'])->name('articles.destroy');
 });
+
 
 require __DIR__ . '/administrator.php';
 require __DIR__ . '/users.php';

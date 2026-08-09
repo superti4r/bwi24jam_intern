@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Page;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -13,15 +14,25 @@ class PageController extends Controller
             return redirect()->route('m.home');
         }
 
-        return $this->renderHome();
+        return $this->render();
     }
 
     public function member()
     {
-        return $this->renderHome();
+        return $this->render();
     }
 
-    protected function renderHome()
+    public function show(string $slug)
+    {
+        $page = Page::query()
+            ->published()
+            ->where('slug', $slug)
+            ->firstOrFail();
+
+        return view('pages.app.custom', compact('page'));
+    }
+
+    protected function render()
     {
         $latest = Article::query()
             ->published()
