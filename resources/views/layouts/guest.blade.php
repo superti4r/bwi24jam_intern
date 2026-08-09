@@ -32,6 +32,8 @@
         @yield('content')
     </main>
 
+    <x-guest.footer />
+
 </body>
 
 </html>
