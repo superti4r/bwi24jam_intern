@@ -5,9 +5,10 @@ use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PageController::class, 'index'])->name('home');
-Route::get('/{slug}', [PageController::class, 'show'])->name('pages.show');
-Route::get('/m/{slug}', [PageController::class, 'show'])->name('m.pages.show');
+
 Route::get('/articles/{slug}/{title}', [ArticleController::class, 'show'])->name('articles.show');
+
+Route::get('/m/{slug}', [PageController::class, 'show'])->name('m.pages.show');
 
 Route::middleware('auth')->group(function () {
     Route::get('/m', [PageController::class, 'member'])->name('m.home');
@@ -23,6 +24,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/articles/{id}', [ArticleController::class, 'destroy'])->name('articles.destroy');
 });
 
+Route::get('/{slug}', [PageController::class, 'show'])->name('pages.show');
 
 require __DIR__ . '/administrator.php';
 require __DIR__ . '/users.php';
