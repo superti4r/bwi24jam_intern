@@ -41,6 +41,17 @@ class ArticleController extends Controller
         return view('pages.articles.create', compact('categories'));
     }
 
+    public function show(string $slug, string $title): View
+    {
+        $article = Article::query()
+            ->published()
+            ->with(['user', 'category'])
+            ->where('slug', $slug)
+            ->firstOrFail();
+
+        return view('pages.app.articles', compact('article'));
+    }
+
     public function store(StoreArticleRequest $request): RedirectResponse
     {
         $this->articleService->create($request->validated(), auth()->id());

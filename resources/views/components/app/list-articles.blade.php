@@ -29,7 +29,8 @@
             @if ($featured->isNotEmpty())
                 <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8">
                     @foreach ($featured as $article)
-                        <a href="#" class="card group overflow-hidden">
+                        <a href="{{ route(auth()->check() ? 'm.articles.show' : 'articles.show', [$article->slug, Str::slug($article->title)]) }}"
+                            class="card group overflow-hidden">
                             @if ($article->thumbnail)
                                 <img src="{{ asset('storage/' . $article->thumbnail) }}" alt="{{ $article->title }}" class="card__image"
                                     style="aspect-ratio: 4 / 3;">
@@ -65,7 +66,8 @@
             @if ($rest->isNotEmpty())
                 <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
                     @foreach ($rest as $article)
-                        <a href="#" class="card group overflow-hidden">
+                        <a href="{{ route(auth()->check() ? 'm.articles.show' : 'articles.show', [$article->slug, Str::slug($article->title)]) }}"
+                            class="card group overflow-hidden">
                             @if ($article->thumbnail)
                                 <img src="{{ asset('storage/' . $article->thumbnail) }}" alt="{{ $article->title }}" class="card__image"
                                     style="aspect-ratio: 4 / 3;">

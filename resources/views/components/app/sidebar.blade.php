@@ -19,10 +19,6 @@
         </a>
         <a href="#"
             class="flex items-center px-4 py-2.5 text-sm font-medium text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)] hover:bg-[var(--color-accent)] rounded-lg transition-colors">
-            Artikel
-        </a>
-        <a href="#"
-            class="flex items-center px-4 py-2.5 text-sm font-medium text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)] hover:bg-[var(--color-accent)] rounded-lg transition-colors">
             Tentang Kami
         </a>
         <a href="#"

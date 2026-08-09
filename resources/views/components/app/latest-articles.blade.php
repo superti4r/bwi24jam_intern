@@ -27,7 +27,8 @@
                 <div class="carousel__track">
                     @foreach ($latest as $index => $article)
                         <div class="carousel__slide" role="group" aria-label="{{ $index + 1 }} of {{ $total }}">
-                            <a href="#" class="block h-full w-full group">
+                            <a href="{{ route(auth()->check() ? 'm.articles.show' : 'articles.show', [$article->slug, Str::slug($article->title)]) }}"
+                                class="block h-full w-full group">
                                 @if ($article->thumbnail)
                                     <img src="{{ asset('storage/' . $article->thumbnail) }}" alt="{{ $article->title }}"
                                         class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105">
