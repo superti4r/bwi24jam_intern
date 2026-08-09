@@ -3,7 +3,9 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Database\Factories\CategoryFactory;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 
@@ -17,7 +19,7 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
 #[Fillable(['name', 'slug'])]
 class Category extends Model
 {
-    use HasUuids;
+    use HasFactory, HasUuids;
     public function articles()
     {
         return $this->hasMany(Article::class);
