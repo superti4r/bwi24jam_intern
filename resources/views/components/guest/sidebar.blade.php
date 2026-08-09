@@ -4,7 +4,7 @@
     x-transition:leave-end="opacity-0" class="fixed inset-0 z-40 flex pointer-events-none" x-cloak
     style="display: none;">
 
-    <div class="absolute inset-0 bg-gray-900/50 dark:bg-black/60 backdrop-blur-sm pointer-events-auto"
+    <div class="absolute inset-0 bg-[var(--color-overlay)]/50 backdrop-blur-sm pointer-events-auto"
         @click="isSidebarOpen = false"></div>
 
     <div class="w-[280px] max-w-[80vw] shrink-0 h-full pointer-events-none"></div>
@@ -22,12 +22,12 @@
     x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0"
     x-transition:leave="transition ease-in duration-200 transform" x-transition:leave-start="translate-x-0"
     x-transition:leave-end="-translate-x-full"
-    class="fixed top-0 left-0 w-[280px] max-w-[80vw] h-full bg-white dark:bg-gray-900 z-50 flex flex-col border-r border-gray-200 dark:border-gray-800 overflow-hidden"
+    class="fixed top-0 left-0 w-[280px] max-w-[80vw] h-full bg-[var(--color-surface)] z-50 flex flex-col border-r border-[var(--color-border)] overflow-hidden"
     x-cloak style="display: none;">
 
     <div class="absolute bottom-0 left-0 w-full h-[70%] z-0 pointer-events-none">
         <div
-            class="absolute inset-0 bg-gradient-to-b from-white via-white/80 to-transparent dark:from-gray-900 dark:via-gray-900/70 dark:to-transparent z-10">
+            class="absolute inset-0 bg-gradient-to-b from-[var(--color-surface)] via-[var(--color-surface)]/80 to-transparent z-10">
         </div>
         <img src="{{ asset('images/bwi24jam_B4r5cfqe3RkYBAQ9nidg1suYXnl7C1Trqq8wNJ2EU8s.webp') }}" alt=""
             class="w-full h-full object-cover object-bottom opacity-100">
@@ -43,19 +43,19 @@
         </div>
 
         <a href="#"
-            class="flex items-center px-4 py-2.5 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100/60 dark:hover:bg-gray-800/60 rounded-lg transition-colors">
+            class="flex items-center px-4 py-2.5 text-sm font-medium text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)] hover:bg-[var(--color-accent)] rounded-lg transition-colors">
             Beranda
         </a>
         <a href="#"
-            class="flex items-center px-4 py-2.5 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100/60 dark:hover:bg-gray-800/60 rounded-lg transition-colors">
+            class="flex items-center px-4 py-2.5 text-sm font-medium text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)] hover:bg-[var(--color-accent)] rounded-lg transition-colors">
             Artikel
         </a>
         <a href="#"
-            class="flex items-center px-4 py-2.5 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100/60 dark:hover:bg-gray-800/60 rounded-lg transition-colors">
+            class="flex items-center px-4 py-2.5 text-sm font-medium text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)] hover:bg-[var(--color-accent)] rounded-lg transition-colors">
             Tentang Kami
         </a>
         <a href="#"
-            class="flex items-center px-4 py-2.5 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100/60 dark:hover:bg-gray-800/60 rounded-lg transition-colors">
+            class="flex items-center px-4 py-2.5 text-sm font-medium text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)] hover:bg-[var(--color-accent)] rounded-lg transition-colors">
             Kontak
         </a>
     </nav>

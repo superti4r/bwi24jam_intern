@@ -19,8 +19,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body
-    class="flex flex-col min-h-screen bg-gray-50 dark:bg-primary text-gray-900 dark:text-gray-100 transition-colors duration-200">
+<body class="flex flex-col min-h-screen transition-colors duration-200">
 
     <x-preloader />
 
