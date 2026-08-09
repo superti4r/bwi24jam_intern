@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="space-y-10">
-    <x-app.latest-articles />
-    <x-app.list-articles />
+    <x-app.latest-articles :articles="$latest" />
+    <x-app.list-articles :articles="$articles" />
 </div>
 @endsection

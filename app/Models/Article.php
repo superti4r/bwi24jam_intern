@@ -40,4 +40,9 @@ class Article extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function scopePublished($query)
+    {
+        return $query->where('status', Status::PUBLISHED->value);
+    }
 }
