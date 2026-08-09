@@ -126,6 +126,38 @@ class ArticleController extends Controller
         return response()->json(['success' => true]);
     }
 
+    public function search(Request $request): JsonResponse
+    {
+        $q = $request->input('q', '');
+
+        if (mb_strlen(trim($q)) < 2) {
+            return response()->json(['results' => []]);
+        }
+
+        $results = Article::query()
+            ->published()
+            ->with(['category'])
+            ->where('title', 'like', '%' . $q . '%')
+            ->orderBy('created_at', 'desc')
+            ->limit(6)
+            ->get()
+            ->map(function (Article $article) {
+                return [
+                    'id' => $article->id,
+                    'title' => $article->title,
+                    'slug' => $article->slug,
+                    'category' => $article->category?->name,
+                    'thumbnail' => $article->thumbnail,
+                    'url' => route(auth()->check() ? 'm.articles.show' : 'articles.show', [
+                        $article->slug,
+                        \Illuminate\Support\Str::slug($article->title),
+                    ]),
+                ];
+            });
+
+        return response()->json(['results' => $results]);
+    }
+
     protected function guard(Article $article): bool
     {
         return auth()->user()->hasRole(Role::ADMINISTRATOR)

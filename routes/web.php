@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PageController::class, 'index'])->name('home');
 
+Route::get('/articles/search', [ArticleController::class, 'search'])->name('articles.search');
+
 Route::get('/articles/{slug}/{title}', [ArticleController::class, 'show'])->name('articles.show');
 
 Route::get('/m/{slug}', [PageController::class, 'show'])->name('m.pages.show');
