@@ -33,6 +33,8 @@
 
     <x-app.footer />
 
+    <x-app.toast />
+
 </body>
 
 </html>

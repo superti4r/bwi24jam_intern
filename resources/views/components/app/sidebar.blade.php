@@ -64,6 +64,18 @@
                 <p class="m-0 text-sm font-medium text-[var(--color-foreground)]">{{ auth()->user()->name }}</p>
                 <hr class="separator my-3" />
             </div>
+
+            @if (auth()->user()->hasRole(App\Enum\Role::ADMINISTRATOR))
+                <div class="px-4 pb-1 pt-1">
+                    <p class="text-[11px] font-semibold uppercase tracking-wider text-[var(--color-muted-foreground)]">
+                        Administrator
+                    </p>
+                </div>
+                <a href="{{ route('administrator.users.index') }}"
+                    class="flex items-center gap-3 px-4 py-2.5 text-sm font-medium text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)] hover:bg-[var(--color-accent)] rounded-lg transition-colors">
+                    Manajemen User
+                </a>
+            @endif
         @endauth
     </nav>
 
