@@ -24,7 +24,7 @@
                     dan terpercaya untuk masyarakat.
                 </p>
 
-                <x-guest.footer-social />
+                <x-app.footer-social />
             </div>
 
             <div>

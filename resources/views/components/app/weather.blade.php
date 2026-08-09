@@ -8,7 +8,7 @@
                 <span class="text-[var(--color-muted-foreground)] group-hover:text-[var(--color-primary)] transition-colors">
                     <x-icons.maps class="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </span>
-                {{ $weather ? $weather->location : 'Banyuwangi, Jawa Timur' }}
+                {{ $weather->location }}
             </a>
 
             <span class="text-[13px] font-medium text-[var(--color-muted-foreground)] whitespace-nowrap">

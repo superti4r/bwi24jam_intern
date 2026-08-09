@@ -23,15 +23,15 @@
 
     <x-preloader />
 
-    <x-guest.header />
+    <x-app.header />
 
-    <x-guest.weather />
+    <x-app.weather />
 
     <main class="flex-1 w-full max-w-screen-2xl mx-auto px-4 md:px-8 py-6 lg:py-10">
         @yield('content')
     </main>
 
-    <x-guest.footer />
+    <x-app.footer />
 
 </body>
 

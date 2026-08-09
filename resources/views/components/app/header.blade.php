@@ -15,17 +15,24 @@
             </span>
         </div>
 
-        <x-guest.search />
+        <x-app.search />
 
         <div
             class="flex items-center h-full pl-4 sm:pl-6 border-l border-[var(--color-border)] gap-2 sm:gap-3 shrink-0">
-            <a href="{{ route('login') }}"
-                class="button button--primary !rounded-full px-4 sm:px-5 py-1.5 sm:py-2 text-sm whitespace-nowrap">
-                Masuk
-            </a>
+            @auth
+                <a href="#" aria-label="Tambah"
+                    class="button button--primary flex items-center justify-center !rounded-full !p-2 w-9 h-9">
+                    <x-icons.plus />
+                </a>
+            @else
+                <a href="{{ route('login') }}"
+                    class="button button--primary !rounded-full px-4 sm:px-5 py-1.5 sm:py-2 text-sm whitespace-nowrap">
+                    Masuk
+                </a>
+            @endauth
         </div>
     </div>
 
-    <x-guest.sidebar />
+    <x-app.sidebar />
 
 </header>

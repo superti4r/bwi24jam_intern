@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components\Guest;
+namespace App\View\Components\App;
 
 use Closure;
 use Illuminate\Contracts\View\View;
@@ -24,6 +24,6 @@ class Weather extends Component
 
     public function render(): View|Closure|string
     {
-        return view('components.guest.weather');
+        return view('components.app.weather');
     }
 }

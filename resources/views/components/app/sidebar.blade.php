@@ -58,12 +58,29 @@
             class="flex items-center px-4 py-2.5 text-sm font-medium text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)] hover:bg-[var(--color-accent)] rounded-lg transition-colors">
             Kontak
         </a>
+
+        @auth
+            <div class="px-4 pt-4">
+                <p class="m-0 text-sm font-medium text-[var(--color-foreground)]">{{ auth()->user()->name }}</p>
+                <hr class="separator my-3" />
+            </div>
+        @endauth
     </nav>
 
     <div class="relative z-20 p-4 pb-6 bg-transparent">
-        <a href="{{ route('login') }}"
-            class="button button--primary w-full flex items-center justify-center py-2.5 text-sm font-medium">
-            Masuk
-        </a>
+        @auth
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit"
+                    class="button button--primary w-full flex items-center justify-center py-2.5 text-sm font-medium">
+                    Keluar
+                </button>
+            </form>
+        @else
+            <a href="{{ route('login') }}"
+                class="button button--primary w-full flex items-center justify-center py-2.5 text-sm font-medium">
+                Masuk
+            </a>
+        @endauth
     </div>
 </div>
