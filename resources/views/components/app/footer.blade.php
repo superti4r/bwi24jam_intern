@@ -31,25 +31,36 @@
                 <h3 class="text-[13px] font-bold text-[var(--color-foreground)] uppercase tracking-wider">
                     Navigasi
                 </h3>
-                <ul class="mt-5 grid grid-cols-1 gap-x-8 gap-y-3 sm:grid-cols-2 lg:grid-cols-3">
-                    <li>
-                        <a href="{{ route(auth()->check() ? 'm.home' : 'home') }}"
-                            class="inline-block text-[14px] text-[var(--color-muted-foreground)] hover:text-[var(--color-primary)] hover:translate-x-1 transition-all duration-200">
-                            Beranda
-                        </a>
-                    </li>
-                    @php
-                        $pages = \App\Models\Page::query()
-                            ->published()
-                            ->orderBy('created_at', 'asc')
-                            ->get();
-                    @endphp
-                    @foreach ($pages as $page)
-                        <li>
-                            <a href="{{ route(auth()->check() ? 'm.pages.show' : 'pages.show', $page->slug) }}"
-                                class="inline-block text-[14px] text-[var(--color-muted-foreground)] hover:text-[var(--color-primary)] hover:translate-x-1 transition-all duration-200">
-                                {{ $page->title }}
-                            </a>
+                @php
+                    $navItems = collect([
+                        [
+                            'label' => 'Beranda',
+                            'url' => route(auth()->check() ? 'm.home' : 'home'),
+                        ],
+                    ]);
+
+                    $pageItems = \App\Models\Page::query()
+                        ->published()
+                        ->orderBy('created_at', 'asc')
+                        ->get()
+                        ->map(fn ($page) => [
+                            'label' => $page->title,
+                            'url' => route(auth()->check() ? 'm.pages.show' : 'pages.show', $page->slug),
+                        ]);
+
+                    $navItems = $navItems->concat($pageItems)->values();
+                    $navColumns = $navItems->chunk(4);
+                @endphp
+
+                <ul class="mt-5 flex flex-wrap gap-x-8 gap-y-3">
+                    @foreach ($navColumns as $column)
+                        <li class="flex min-w-0 flex-1 flex-col gap-3">
+                            @foreach ($column as $item)
+                                <a href="{{ $item['url'] }}"
+                                    class="inline-block text-[14px] text-[var(--color-muted-foreground)] hover:text-[var(--color-primary)] hover:translate-x-1 transition-all duration-200">
+                                    {{ $item['label'] }}
+                                </a>
+                            @endforeach
                         </li>
                     @endforeach
                 </ul>

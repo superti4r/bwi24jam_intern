@@ -8,13 +8,13 @@ Route::get('/', [PageController::class, 'index'])->name('home');
 
 Route::get('/articles/search', [ArticleController::class, 'search'])->name('articles.search');
 
-Route::get('/articles/{slug}/{title}', [ArticleController::class, 'show'])->name('articles.show');
+Route::get('/articles/{slug}/{title}', [ArticleController::class, 'show'])->where('slug', '[a-z0-9]+')->name('articles.show');
 
 Route::get('/m/{slug}', [PageController::class, 'show'])->name('m.pages.show');
 
 Route::middleware('auth')->group(function () {
     Route::get('/m', [PageController::class, 'member'])->name('m.home');
-    Route::get('/m/{slug}/{title}', [ArticleController::class, 'show'])->name('m.articles.show');
+    Route::get('/m/{slug}/{title}', [ArticleController::class, 'show'])->where('slug', '[a-z0-9]+')->name('m.articles.show');
 
     Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
     Route::get('/articles/create', [ArticleController::class, 'create'])->name('articles.create');

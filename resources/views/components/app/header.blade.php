@@ -20,7 +20,7 @@
         <div
             class="flex items-center h-full pl-4 sm:pl-6 border-l border-[var(--color-border)] gap-2 sm:gap-3 shrink-0">
             @auth
-                <a href="#" aria-label="Tambah"
+                <a href="{{ route('articles.create') }}" aria-label="Tambah"
                     class="button button--primary flex items-center justify-center !rounded-full !p-2 w-9 h-9">
                     <x-icons.plus />
                 </a>
