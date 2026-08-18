@@ -1,0 +1,15 @@
+.ql-toolbar.ql-snow,
+.ql-container.ql-snow {
+    border-color: var(--color-border);
+    font-family: var(--font-sans);
+}
+
+.ql-container.ql-snow {
+    min-height: 16rem;
+    font-size: 1rem;
+}
+
+.ql-editor {
+    min-height: 16rem;
+    line-height: 1.7;
+}

@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+@import "./colors.css";
+@import "./theme.css";
+@import "./base.css";
+@import "./utilities/motion.css";
+@import "./utilities/editorial.css";
+@import "./utilities/data-table.css";
+@import "./utilities/video.css";
+@import "./editor/quill.css";
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';

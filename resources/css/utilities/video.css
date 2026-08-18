@@ -1,0 +1,11 @@
+@utility video-cover-frame {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 177.777778vh;
+    height: 56.25vw;
+    min-width: 100%;
+    min-height: 100%;
+    max-width: none;
+    transform: translate(-50%, -50%);
+}
